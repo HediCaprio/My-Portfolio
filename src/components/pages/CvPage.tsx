@@ -66,7 +66,7 @@ export default function CvPage() {
     <div className="portfolio-container">
       <Header />
 
-      <main className="main-content" style={{ alignItems: 'flex-start', paddingTop: '2rem' }}>
+      <main className="main-content" style={{ alignItems: 'flex-start' }}>
         <div className="projects-wrapper" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
           <h1 className="title" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Mon CV</h1>
           

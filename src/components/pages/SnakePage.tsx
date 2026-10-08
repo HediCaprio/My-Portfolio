@@ -128,7 +128,7 @@ export default function SnakePage() {
     <div className="portfolio-container">
       <Header />
 
-      <main className="main-content" style={{ alignItems: 'center', paddingTop: '2rem', flexDirection: 'column' }}>
+      <main className="main-content" style={{ alignItems: 'center', flexDirection: 'column' }}>
         <h1 className="title" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Jeu du Snake</h1>
         <p className="description" style={{ marginBottom: '2rem' }}>
           Score : <strong style={{ color: '#f97316' }}>{score}</strong>
