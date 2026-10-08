@@ -15,6 +15,7 @@ const Header = () => {
             <Link to="/projects" className="nav-link">Projets</Link>
             <Link to="/competences" className="nav-link">Compétences</Link>
             <Link to="/contacts" className="nav-link">Contact</Link>
+            <Link to="/jeux/snake" className="nav-link" style={{ color: "#f97316" }}>Jeux</Link>
 
             {!authenticatedUser && (
               <button 
