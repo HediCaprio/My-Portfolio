@@ -163,7 +163,7 @@ app.delete('/api/skills/:id', (req: Request, res: Response) => {
 const frontendPath = path.join(__dirname, '../../dist');
 app.use(express.static(frontendPath));
 
-app.get('*', (req: Request, res: Response) => {
+app.use((req: Request, res: Response) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
