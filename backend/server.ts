@@ -160,7 +160,7 @@ app.delete('/api/skills/:id', (req: Request, res: Response) => {
 
 
 // --- SERVIR LE FRONTEND (React) ---
-const frontendPath = path.join(__dirname, '../../dist');
+const frontendPath = path.join(__dirname, '../dist');
 app.use(express.static(frontendPath));
 
 app.use((req: Request, res: Response) => {
