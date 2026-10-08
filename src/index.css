@@ -1,0 +1,596 @@
+/* Réinitialisation globale pour prendre tout l'écran */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Réinitialisation de base */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #050505; /* Fond bleu nuit très sombre */
+  color: white;
+}
+
+.portfolio-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* Lueur bleutée/violette au centre pour habiller le fond */
+  background: radial-gradient(circle at 50% 40%, #2a1100 0%, #050505 60%);
+}
+
+/* La barre de navigation */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  padding-right: 4rem; /* <-- C'est l'espace qui empêche de coller au bord droit */
+  
+  display: flex;
+  justify-content: flex-end; /* <-- Pousse les éléments vers la droite */
+  gap: 4rem; 
+  z-index: 10;
+  
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #f97316, #ea580c) 1;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f97316; /* Devient bleu clair au survol */
+}
+
+/* Le contenu central */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* --- Nouvelle animation stylée du titre --- */
+@keyframes textFocusIn {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.title-animate {
+  animation: textFocusIn 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes gradientShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.name-gradient {
+  /* Dégradé avec des nuances d'orange et une touche lumineuse au milieu */
+  background: linear-gradient(to right, #ea580c 20%, #ffedd5 50%, #ea580c 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShine 4s linear infinite; /* Animation continue du dégradé */
+}
+
+/* On enlève l'animation du curseur puisqu'on l'a supprimé du HTML */
+
+.description {
+  color: #64748b;
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+}
+
+/* Le Footer */
+.footer {
+  width: 100%;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #64748b; /* Un gris discret */
+  border-top: 1px solid #222222; /* Petite ligne de séparation subtile */
+  font-size: 0.875rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 2rem;
+  z-index: 1; /* S'assure que le texte reste au-dessus du fond */
+}
+
+.description {
+  color: #94a3b8;
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* --- Boutons d'action --- */
+.cta-container {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #f97316, #ea580c);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.4); /* Halo violet au survol */
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #cbd5e1;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid #333333;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #f97316;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* --- Badges de compétences --- */
+.skills-badges {
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.badge {
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid #333333;
+  color: #94a3b8;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.badge:hover {
+  border-color: #f97316;
+  color: #e2e8f0;
+}
+
+/* --- Page Compétences --- */
+.skills-wrapper {
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem;
+  text-align: left;
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+.skill-category-card {
+  background: rgba(30, 30, 30, 0.4);
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.skill-category-title {
+  color: #f8fafc;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #333333;
+  padding-bottom: 0.75rem;
+}
+
+.skill-badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skill-badge {
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: #f97316;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+  background: rgba(249, 115, 22, 0.2);
+  border-color: #f97316;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+}
+
+/* --- Page Contact --- */
+.contact-wrapper {
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 2rem;
+  text-align: left;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+.contact-card {
+  background: rgba(30, 30, 30, 0.4);
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  text-decoration: none; /* Enlève le soulignement des liens */
+  color: white;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: #f97316;
+  background: rgba(30, 30, 30, 0.8);
+}
+
+/* On désactive l'effet de survol pour la localisation car ce n'est pas un lien */
+.location-card:hover {
+  transform: none;
+  border-color: #333333;
+  background: rgba(30, 30, 30, 0.4);
+  cursor: default;
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: #f8fafc;
+}
+
+.contact-card p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   PAGE PROJETS : GRILLE ET CARTES
+   ========================================= */
+
+.projects-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto; /* Centre le conteneur */
+  padding: 0 2rem;
+  text-align: center; /* Centre le grand titre et la description */
+}
+
+/* La grille qui va placer les projets côte à côte */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding-bottom: 4rem;
+  text-align: left; /* Remet le texte à gauche à l'intérieur des cartes */
+  margin-top: 2rem;
+}
+
+/* Le design des cartes */
+.project-card {
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* Fait "sauter" la carte au survol */
+  border-color: #f97316;
+  background: rgba(30, 30, 30, 0.9);
+}
+
+.project-title {
+  font-size: 1.5rem;
+  color: #f8fafc;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.project-desc {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Pousse les tags vers le bas si la description est courte */
+}
+
+/* Les petits badges technologiques (tags) */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* Écarte les mots ! */
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  background: #050505;
+  border: 1px solid #444444;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+/* Le lien "Voir le code" */
+.project-link {
+  color: #f97316; /* Bleu clair lisible */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+.project-link:hover {
+  color: #fb923c; /* Devient violet au survol */
+}
+/* Animations ajoutées */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+.delay-4 { animation-delay: 1.2s; }
+.delay-5 { animation-delay: 1.5s; }
+
+.quick-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+  border-top: 1px solid #333333;
+  padding-top: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f97316;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.hero-greeting {
+  color: #f97316;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+
+.aGauche {
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.button {
+  
+}
+/* --- Page d'authentification --- */
+.auth-card {
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.auth-title {
+  color: #f8fafc;
+  font-size: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.auth-error {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.auth-input {
+  background: #0a0a0a;
+  border: 1px solid #333333;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 8px; /* Plus carré pour le formulaire que pour les ronds de l'accueil */
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(to right, #ea580c, #f97316, #ea580c);
+  background-size: 200% auto;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+.auth-submit:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
+}
+
+.auth-switch {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.btn-switch {
+  background: none;
+  border: none;
+  color: #f97316;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.btn-switch:hover {
+  text-decoration: underline;
+}
+
+/* Styling the buttons in the navigation bar */
+.nav-btn {
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.85rem !important;
+  border-width: 1px !important;
+  margin-left: 1rem; margin-right: 0;
+}
