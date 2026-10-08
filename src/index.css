@@ -594,3 +594,68 @@ body, html {
   border-width: 1px !important;
   margin-left: 1rem; margin-right: 0;
 }
+
+/* =========================================
+   RESPONSIVE DESIGN (Mobiles & Tablettes)
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* Réduire la taille des grands titres */
+  .title {
+    font-size: 2.5rem !important;
+  }
+  
+  /* Ajuster la barre de navigation */
+  .navbar {
+    position: relative !important;
+    flex-direction: column;
+    padding: 1rem !important;
+    gap: 1rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+  
+  /* Retirer la position absolue du titre du portfolio pour éviter les chevauchements */
+  .aGauche {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    text-align: center;
+    margin-bottom: 1rem !important;
+    display: block;
+  }
+  
+  /* Centrer les éléments principaux */
+  .hero-content {
+    margin-top: 1rem !important;
+    padding: 0 1rem;
+  }
+  
+  /* Réorganiser les boutons (l'un en dessous de l'autre) */
+  .cta-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Statistiques plus compactes */
+  .quick-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  
+  /* Ajuster l'espacement global */
+  .projects-wrapper, .skills-wrapper, .contact-wrapper {
+    padding: 0 1rem;
+  }
+  
+  .main-content {
+    padding-top: 2rem !important;
+  }
+  
+  .auth-card {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}
