@@ -2,7 +2,7 @@ import './App.css'
 import './Header'
 import type {AuthenticatedUser, MaybeAuthenticatedUser, User, Context} from "../../types"
 import { useEffect, useState } from 'react'
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { clearAuthenticatedUser, getAuthenticatedUser, storeAuthenticatedUser } from '../utils/sessions';
 import '../index.css'
 
