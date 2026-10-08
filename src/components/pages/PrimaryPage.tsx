@@ -30,7 +30,7 @@ export default function PrimaryPage() {
           {/* Les boutons d'action */}
           <div className="cta-container animate-fade-in-up delay-2">
             <button onClick={()=> navigate("/projects")} className="btn-primary">Découvrir mes projets</button>
-            <button onClick={()=> navigate("/contact")} className="btn-secondary">Me contacter</button>
+            <button onClick={()=> navigate("/contacts")} className="btn-secondary">Me contacter</button>
           </div>
 
           {/* Les badges de compétences */}
