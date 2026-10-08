@@ -11,7 +11,7 @@ const SECRET_KEY = 'votre_cle_secrete_super_securisee'; // À changer en prod
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // Base de données locale SQLite
 const db = new Database('database.sqlite');
@@ -32,6 +32,14 @@ db.exec(`
     description TEXT,
     tags TEXT,
     link TEXT
+  )
+`);
+
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS settings (
+    key TEXT PRIMARY KEY,
+    value TEXT
   )
 `);
 
@@ -165,6 +173,34 @@ app.use(express.static(frontendPath));
 
 app.use((req: Request, res: Response) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+
+// --- ROUTES CV ---
+app.get('/api/cv', (req: Request, res: Response) => {
+  try {
+    const row = db.prepare('SELECT value FROM settings WHERE key = ?').get('cv_pdf') as any;
+    if (row && row.value) {
+      res.json({ cv: row.value });
+    } else {
+      res.json({ cv: null });
+    }
+  } catch (err) {
+    res.status(500).json({ error: "Erreur lors de la récupération du CV." });
+  }
+});
+
+app.post('/api/cv', (req: Request, res: Response): any => {
+  const { cvData } = req.body;
+  if (!cvData) return res.status(400).json({ error: "Aucune donnée de CV fournie." });
+  
+  try {
+    const insert = db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)');
+    insert.run('cv_pdf', cvData);
+    res.json({ message: "CV mis à jour avec succès." });
+  } catch (err) {
+    res.status(500).json({ error: "Erreur lors de la mise à jour du CV." });
+  }
 });
 
 app.listen(PORT, () => {

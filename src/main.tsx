@@ -9,6 +9,7 @@ import React from "react";
 import ReactDOM from 'react-dom/client';
 import ContactPage from "./components/pages/ContactsPage.tsx";
 import SnakePage from "./components/pages/SnakePage.tsx";
+import CvPage from "./components/pages/CvPage.tsx";
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
     {
       path: 'jeux/snake',
       element: <SnakePage/>,
+    },
+    {
+      path: 'cv',
+      element: <CvPage/>,
     },
     ],
   },
