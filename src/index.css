@@ -605,15 +605,25 @@ body, html {
     font-size: 2.5rem !important;
   }
   
-  /* Ajuster la barre de navigation */
+  /* Ajuster la barre de navigation en mode horizontal */
   .navbar {
     position: relative !important;
-    flex-direction: column;
-    padding: 1rem !important;
-    gap: 1rem !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    padding: 1rem 0.5rem !important;
+    gap: 0.5rem 1rem !important;
     align-items: center !important;
     justify-content: center !important;
-    text-align: center;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem !important;
+  }
+
+  .nav-btn {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    margin: 0 !important;
   }
   
   /* Retirer la position absolue du titre du portfolio pour éviter les chevauchements */
@@ -622,8 +632,9 @@ body, html {
     top: 0 !important;
     left: 0 !important;
     text-align: center;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.5rem !important;
     display: block;
+    width: 100%; /* Le titre prend toute la largeur au-dessus de la navbar */
   }
   
   /* Centrer les éléments principaux */
