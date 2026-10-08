@@ -23,7 +23,7 @@ export default function CompetencesPage() {
 
   const fetchSkills = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/skills');
+      const res = await fetch('/api/skills');
       if (res.ok) {
         const data = await res.json();
         setSkills(data);
@@ -42,7 +42,7 @@ export default function CompetencesPage() {
     if (!isAdmin) return;
 
     try {
-      const res = await fetch('http://localhost:3000/api/skills', {
+      const res = await fetch('/api/skills', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ category: newCategory, name: newName })
@@ -62,7 +62,7 @@ export default function CompetencesPage() {
     if (!confirm("Supprimer cette compétence ?")) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/skills/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/skills/${id}`, { method: 'DELETE' });
       if (res.ok) fetchSkills();
     } catch (err) {
       console.error("Erreur de suppression", err);

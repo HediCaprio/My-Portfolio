@@ -1,11 +1,12 @@
 import express, { Request, Response } from 'express';
+import path from 'path';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import Database from 'better-sqlite3';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const SECRET_KEY = 'votre_cle_secrete_super_securisee'; // À changer en prod
 
 // Middleware
@@ -155,6 +156,15 @@ app.delete('/api/skills/:id', (req: Request, res: Response) => {
   } catch (err) {
     res.status(500).json({ error: "Erreur lors de la suppression de la compétence." });
   }
+});
+
+
+// --- SERVIR LE FRONTEND (React) ---
+const frontendPath = path.join(__dirname, '../../dist');
+app.use(express.static(frontendPath));
+
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 app.listen(PORT, () => {

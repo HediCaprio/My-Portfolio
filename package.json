@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "render-build": "npm install && npm run build && cd backend && npm install",
+    "render-start": "cd backend && npm start"
   },
   "dependencies": {
     "react": "^19.2.8",

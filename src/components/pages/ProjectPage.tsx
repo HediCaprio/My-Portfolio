@@ -25,7 +25,7 @@ export default function ProjectPage() {
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/projects');
+      const res = await fetch('/api/projects');
       if (res.ok) {
         const data = await res.json();
         setProjects(data);
@@ -44,7 +44,7 @@ export default function ProjectPage() {
     if (!isAdmin) return;
 
     try {
-      const res = await fetch('http://localhost:3000/api/projects', {
+      const res = await fetch('/api/projects', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -72,7 +72,7 @@ export default function ProjectPage() {
     if (!confirm("Voulez-vous vraiment supprimer ce projet ?")) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/projects/${id}`, {
+      const res = await fetch(`/api/projects/${id}`, {
         method: 'DELETE'
       });
       if (res.ok) {

@@ -35,7 +35,7 @@ function App() {
         },
       };
 
-      const response = await fetch("http://localhost:3000/auths/login", options);
+      const response = await fetch("/auths/login", options);
 
       if (!response.ok)
         throw new Error(
@@ -64,7 +64,7 @@ function App() {
         },
       };
 
-      const response = await fetch("http://localhost:3000/auths/register", options);
+      const response = await fetch("/auths/register", options);
 
       if (!response.ok)
         throw new Error(
