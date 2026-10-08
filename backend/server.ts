@@ -167,13 +167,7 @@ app.delete('/api/skills/:id', (req: Request, res: Response) => {
 });
 
 
-// --- SERVIR LE FRONTEND (React) ---
-const frontendPath = path.join(__dirname, '../dist');
-app.use(express.static(frontendPath));
 
-app.use((req: Request, res: Response) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
-});
 
 
 // --- ROUTES CV ---
@@ -201,6 +195,14 @@ app.post('/api/cv', (req: Request, res: Response): any => {
   } catch (err) {
     res.status(500).json({ error: "Erreur lors de la mise à jour du CV." });
   }
+});
+
+// --- SERVIR LE FRONTEND (React) ---
+const frontendPath = path.join(__dirname, '../dist');
+app.use(express.static(frontendPath));
+
+app.use((req: Request, res: Response) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
