@@ -67,6 +67,8 @@ body, html {
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-top: 7rem; /* Sécurité pour éviter que le contenu ne passe sous la navbar (en absolute) sur les petits écrans */
+  padding-bottom: 2rem;
 }
 
 .subtitle {

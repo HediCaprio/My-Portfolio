@@ -87,7 +87,7 @@ export default function ProjectPage() {
     <div className="portfolio-container">
       <Header />
 
-      <main className="main-content" style={{ alignItems: 'flex-start', paddingTop: '8rem' }}>
+      <main className="main-content" style={{ alignItems: 'flex-start', paddingTop: '2rem' }}>
         <div className="projects-wrapper">
           <h1 className="title" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Mes Projets</h1>
           <p className="description" style={{ marginBottom: '3rem' }}>

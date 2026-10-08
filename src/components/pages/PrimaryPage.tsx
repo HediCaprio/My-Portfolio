@@ -12,7 +12,7 @@ export default function PrimaryPage() {
 
       {/* Centre de la page */}
       <main className="main-content">
-        <div className="hero-content" style={{ marginTop: '4rem' }}>
+        <div className="hero-content" style={{ marginTop: '0' }}>
           
           <span className="hero-greeting animate-fade-in-up">Bonjour, je suis</span>
           

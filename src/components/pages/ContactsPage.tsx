@@ -7,7 +7,7 @@ export default function ContactPage() {
       <Header/>
 
       {/* Contenu principal */}
-      <main className="main-content" style={{ alignItems: 'flex-start', paddingTop: '8rem' }}>
+      <main className="main-content" style={{ alignItems: 'flex-start', paddingTop: '2rem' }}>
         <div className="contact-wrapper">
           <h1 className="title" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Me Contacter</h1>
           <p className="description" style={{ marginBottom: '3rem' }}>
