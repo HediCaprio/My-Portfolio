@@ -1,12 +1,46 @@
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header';
 
+function FloatingParticles() {
+  // Generate 25 particles with random properties
+  const particles = Array.from({ length: 25 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 1,
+    left: Math.random() * 100,
+    delay: Math.random() * 15,
+    duration: Math.random() * 15 + 10,
+    opacity: Math.random() * 0.4 + 0.1,
+  }));
+
+  return (
+    <div className="particles-container">
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="particle"
+          style={{
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            left: `${p.left}%`,
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.duration}s`,
+            opacity: p.opacity,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function PrimaryPage() {
   const navigate = useNavigate();
 
   return (
     <div className="portfolio-container">
       
+      {/* Animated floating particles */}
+      <FloatingParticles />
+
       {/* Barre de navigation */}
       <Header/>
 

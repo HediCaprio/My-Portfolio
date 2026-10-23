@@ -24,8 +24,85 @@ body, html {
   display: flex;
   flex-direction: column;
   position: relative;
-  /* Lueur bleutée/violette au centre pour habiller le fond */
-  background: radial-gradient(circle at 50% 40%, #2a1100 0%, #050505 60%);
+  background: #050505;
+  overflow: hidden;
+}
+
+/* === ANIMATED BACKGROUND LAYERS === */
+
+/* Layer 1: Floating glowing orbs */
+.portfolio-container::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(600px circle at var(--orb1-x, 20%) var(--orb1-y, 30%), rgba(249, 115, 22, 0.08) 0%, transparent 60%),
+    radial-gradient(500px circle at var(--orb2-x, 75%) var(--orb2-y, 60%), rgba(234, 88, 12, 0.06) 0%, transparent 60%),
+    radial-gradient(400px circle at var(--orb3-x, 50%) var(--orb3-y, 80%), rgba(251, 146, 60, 0.05) 0%, transparent 60%);
+  animation: orbFloat 20s ease-in-out infinite;
+}
+
+/* Layer 2: Subtle grid pattern */
+.portfolio-container::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 75%);
+}
+
+@keyframes orbFloat {
+  0%   { --orb1-x: 20%; --orb1-y: 30%; --orb2-x: 75%; --orb2-y: 60%; --orb3-x: 50%; --orb3-y: 80%; }
+  25%  { --orb1-x: 35%; --orb1-y: 50%; --orb2-x: 60%; --orb2-y: 35%; --orb3-x: 30%; --orb3-y: 65%; }
+  50%  { --orb1-x: 55%; --orb1-y: 25%; --orb2-x: 40%; --orb2-y: 70%; --orb3-x: 70%; --orb3-y: 45%; }
+  75%  { --orb1-x: 70%; --orb1-y: 55%; --orb2-x: 25%; --orb2-y: 45%; --orb3-x: 55%; --orb3-y: 75%; }
+  100% { --orb1-x: 20%; --orb1-y: 30%; --orb2-x: 75%; --orb2-y: 60%; --orb3-x: 50%; --orb3-y: 80%; }
+}
+
+/* === FLOATING PARTICLES === */
+.particles-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  background: #f97316;
+  box-shadow: 0 0 6px rgba(249, 115, 22, 0.4);
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--particle-opacity, 0.3);
+  }
+  90% {
+    opacity: var(--particle-opacity, 0.3);
+  }
+  100% {
+    transform: translateY(-110vh) translateX(40px);
+    opacity: 0;
+  }
 }
 
 /* La barre de navigation */
@@ -69,6 +146,8 @@ body, html {
   text-align: center;
   padding-top: 7rem; /* Sécurité pour éviter que le contenu ne passe sous la navbar (en absolute) sur les petits écrans */
   padding-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .subtitle {

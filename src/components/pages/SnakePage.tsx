@@ -63,7 +63,7 @@ export default function SnakePage() {
 
       // Draw Snake
       snake.forEach((segment, index) => {
-        ctx.fillStyle = index === 0 ? '#f97316' : '#ea580c'; // Orange
+        ctx.fillStyle = index === 0 ? '#17f931' : '#17f931'; // vert
         ctx.fillRect(segment.x * GRID_SIZE, segment.y * GRID_SIZE, GRID_SIZE - 1, GRID_SIZE - 1);
       });
     };
